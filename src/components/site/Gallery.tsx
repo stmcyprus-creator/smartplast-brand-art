@@ -107,14 +107,15 @@ export function Gallery() {
           </button>
           <figure onClick={(e) => e.stopPropagation()} className="max-h-[85vh] max-w-5xl">
             <img
-              src={images[index].src}
-              alt={images[index].alt}
+              src={images[index]?.src}
+              alt={images[index]?.alt ?? ""}
               className="max-h-[78vh] w-auto rounded-[1.5rem] border border-border object-contain"
             />
             <figcaption className="mt-4 text-center text-sm text-muted-foreground">
-              {images[index].alt} — {index + 1} / {images.length}
+              {images[index]?.alt} — {index + 1} / {images.length}
             </figcaption>
           </figure>
+
           <button
             type="button"
             aria-label="Вперёд"
