@@ -5,8 +5,9 @@ import { Logo } from "./Logo";
 const nav = [
   { label: "О компании", href: "#about" },
   { label: "Продукция", href: "#products" },
-  { label: "Брендирование", href: "#branding" },
-  { label: "Доставка", href: "#delivery" },
+  { label: "Производство", href: "#production" },
+  { label: "Технологии", href: "#tech" },
+  { label: "Партнёрам", href: "#partners" },
   { label: "Контакты", href: "#contact" },
 ];
 
@@ -30,7 +31,7 @@ export function Header() {
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 lg:px-8">
         <div className="flex min-w-0 items-center gap-10">
           <Logo />
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-6 xl:flex">
             {nav.map((item) => (
               <a
                 key={item.href}
@@ -45,11 +46,11 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="tel:+74951362374"
-            className="hidden items-center gap-2 text-sm font-semibold transition-colors hover:text-primary md:flex"
+            href="tel:+77000000000"
+            className="hidden items-center gap-2 text-sm font-semibold transition-colors hover:text-primary lg:flex"
           >
             <Phone className="h-4 w-4 shrink-0 text-primary" />
-            +7 (495) 136-23-74
+            +7 (700) 000-00-00
           </a>
           <a
             href="#contact"
@@ -61,7 +62,7 @@ export function Header() {
             type="button"
             aria-label="Меню"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border lg:hidden"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border xl:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -69,7 +70,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="glass mx-5 mt-3 rounded-3xl p-5 lg:hidden">
+        <div className="glass mx-5 mt-3 rounded-3xl p-5 xl:hidden">
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (
               <a
@@ -83,10 +84,10 @@ export function Header() {
             ))}
           </nav>
           <a
-            href="tel:+74951362374"
+            href="tel:+77000000000"
             className="mt-3 flex items-center gap-2 px-3 text-sm font-semibold text-primary"
           >
-            <Phone className="h-4 w-4" /> +7 (495) 136-23-74
+            <Phone className="h-4 w-4" /> +7 (700) 000-00-00
           </a>
           <a
             href="#contact"
