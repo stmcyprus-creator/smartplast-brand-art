@@ -1,19 +1,23 @@
+import logoAsset from "@/assets/like-pack-logo.webp.asset.json";
+
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <a href="#top" className="group flex shrink-0 items-center gap-3">
-      <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-6">
-        <span className="font-display text-sm font-bold">lp</span>
+      <span className="grid place-items-center rounded-xl bg-foreground/95 p-1.5 transition-transform duration-300 group-hover:scale-105">
+        <img
+          src={logoAsset.url}
+          alt="Like Pack"
+          width={132}
+          height={56}
+          className="h-7 w-auto sm:h-8"
+        />
       </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-base font-bold tracking-tight sm:text-lg">
-          like-pack<span className="text-primary">.qz</span>
+      {!compact && (
+        <span className="hidden text-[10px] uppercase leading-tight tracking-[0.18em] text-muted-foreground sm:block">
+          Производство упаковки
+          <br />в Казахстане
         </span>
-        {!compact && (
-          <span className="mt-1 hidden text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:block">
-            Производство упаковки в Казахстане
-          </span>
-        )}
-      </span>
+      )}
     </a>
   );
 }
