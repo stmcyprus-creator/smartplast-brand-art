@@ -1,14 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
-import { About, Delivery, Process, Products, Stats, Why } from "@/components/site/Sections";
+import {
+  About,
+  Engineering,
+  Mission,
+  Partners,
+  Printing,
+  Production,
+  Products,
+  Stats,
+} from "@/components/site/Sections";
 import { Gallery } from "@/components/site/Gallery";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
-const title = "СмартПласт — брендированная одноразовая посуда под заказ";
+const title = "Like Pack — современная упаковка Made in Kazakhstan";
 const description =
-  "Производим одноразовую посуду и упаковку с вашим логотипом: дизайн, образец, тираж от 10 000 шт. за 14 дней. Собственное производство в Московской области.";
+  "Производство полипропиленовой упаковки для пищевой промышленности и розничной торговли. Высокое качество, роботизированное производство и шести цветная печать.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,7 +27,23 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://smartplast-brand-art.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://smartplast-brand-art.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "ТОО «ХВАМДА МАШИНЕРИ KZ»",
+          alternateName: "Like Pack",
+          url: "https://smartplast-brand-art.lovable.app/",
+          address: { "@type": "PostalAddress", addressCountry: "KZ" },
+          description,
+        }),
+      },
     ],
   }),
   component: Index,
@@ -32,11 +57,13 @@ function Index() {
         <Hero />
         <Stats />
         <About />
+        <Mission />
         <Products />
-        <Process />
-        <Why />
-        <Delivery />
+        <Production />
+        <Printing />
+        <Engineering />
         <Gallery />
+        <Partners />
         <Contact />
       </main>
       <Footer />
