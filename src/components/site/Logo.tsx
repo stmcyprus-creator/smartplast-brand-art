@@ -9,7 +9,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         width={960}
         height={480}
         className={`w-auto transition-transform duration-300 group-hover:scale-[1.03] ${
-          compact ? "h-9" : "h-9 sm:h-10"
+          compact ? "h-11" : "h-11"
         }`}
       />
       {!compact && (
