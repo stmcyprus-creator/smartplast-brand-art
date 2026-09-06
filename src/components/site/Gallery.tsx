@@ -15,10 +15,10 @@ import { Reveal } from "./reveal";
 const images = [
   { src: gal1, alt: "Брендированный кофейный стакан в кофейне" },
   { src: gal2, alt: "Комплект брендированной посуды для доставки" },
-  { src: brandDetail, alt: "Чёрные стаканы с лаймовым логотипом" },
+  { src: aboutCupAsset.url, alt: "Чёрные стаканы с лаймовым логотипом" },
   { src: catCups, alt: "Пластиковые стаканы с печатью" },
   { src: gal3, alt: "Производственная линия" },
-  { src: heroMockup, alt: "Мокап брендированной посуды" },
+  { src: heroCupsAsset.url, alt: "Мокап брендированной посуды" },
   { src: gal4, alt: "Десертные стаканчики с логотипом" },
   { src: catLids, alt: "Крышки с брендированием" },
   { src: catPackaging, alt: "Упаковка в фирменном стиле" },
