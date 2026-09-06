@@ -1,5 +1,5 @@
 import { ArrowRight, Clock, Palette, Printer } from "lucide-react";
-import heroMockup from "@/assets/hero-mockup.jpg";
+import heroCups from "@/assets/hero-cups.png.asset.json";
 import { Reveal } from "./reveal";
 
 const floating = [
@@ -64,10 +64,10 @@ export function Hero() {
             <div className="absolute inset-8 rounded-full bg-primary/25 blur-3xl" />
             <div className="grain relative overflow-hidden rounded-[2.5rem] border border-border">
               <img
-                src={heroMockup}
-                alt="Брендированные стаканы и упаковка СмартПласт"
-                width={1200}
-                height={1200}
+                src={heroCups.url}
+                alt="Брендированные пластиковые стаканы с печатью логотипа"
+                width={972}
+                height={1600}
                 className="h-full w-full object-cover"
               />
             </div>

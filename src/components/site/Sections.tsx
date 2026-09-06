@@ -14,7 +14,7 @@ import {
   Utensils,
   Wallet,
 } from "lucide-react";
-import brandDetail from "@/assets/brand-detail.jpg";
+import brandDetail from "@/assets/about-cup.jpg.asset.json";
 import catCups from "@/assets/cat-cups.jpg";
 import catLids from "@/assets/cat-lids.jpg";
 import catContainers from "@/assets/cat-containers.jpg";
@@ -108,8 +108,8 @@ export function About() {
             <div className="absolute -inset-4 rounded-[2.5rem] bg-primary/15 blur-3xl" />
             <div className="grain relative overflow-hidden rounded-[2.5rem] border border-border">
               <img
-                src={brandDetail}
-                alt="Брендированные кофейные стаканы крупным планом"
+                src={brandDetail.url}
+                alt="Пластиковый стакан с брендированной печатью крупным планом"
                 loading="lazy"
                 width={1200}
                 height={1408}
