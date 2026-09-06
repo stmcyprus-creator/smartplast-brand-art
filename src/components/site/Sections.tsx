@@ -300,3 +300,76 @@ export function Delivery() {
     </section>
   );
 }
+
+const blocks = [
+  {
+    icon: Factory,
+    kicker: "Производственная база",
+    items: [
+      "Производственную базу составляет весь необходимый перечень оборудования. Для инжекционного литья под давлением используются инжекционно-литьевые машины одного из лидеров тяжёлого машиностроения Китая — компании NINGBO HWAMDA MACHINERY.",
+      "Все основные процессы роботизированы, что исключает человеческий фактор и контакт с продукцией. Наша площадка служит экспериментальной базой для внедрения новых технических решений, и мы гордимся своей передовой оснащённостью.",
+      "Производство обеспечено всем необходимым вспомогательным оборудованием для приёма сырья, переработки, складирования готовой продукции и отгрузки покупателю.",
+    ],
+  },
+  {
+    icon: Palette,
+    kicker: "Печать",
+    items: [
+      "Используется шестицветная офсетная печать на стаканах — это позволяет выполнять сложные задачи и гарантировать очень высокое качество печати.",
+      "Максимальное соответствие цветовой гаммы оригиналу изображения обеспечивают краски CMYK и Pantone.",
+    ],
+  },
+  {
+    icon: BadgeCheck,
+    kicker: "Инженерный персонал",
+    items: [
+      "Полную инжиниринговую поддержку оказывает ТОО «ХВАМДА МАШИНЕРИ KZ» (HWAMDA MACHINERY KZ) — официальный представитель в Республике Казахстан и дилер производителя инжекционно-литьевых машин NINGBO HWAMDA MACHINERY.",
+      "Обслуживание и эксплуатация оборудования выполняются совместно с сотрудниками ТОО «ХВАМДА МАШИНЕРИ KZ». Так обеспечивается бесперебойная работа и своевременный сервис, а запасные части поставляются напрямую со склада поставщика оборудования.",
+    ],
+  },
+];
+
+export function Production() {
+  return (
+    <section id="production" className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
+      <SectionTitle
+        kicker="Производство"
+        title="Оборудование, роботы и точная печать"
+        text="Полный цикл производства упаковки из полипропилена — от приёма сырья до отгрузки готового тиража."
+      />
+      <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        {blocks.map((b, i) => (
+          <Reveal key={b.kicker} delay={i * 90}>
+            <div className="glass h-full rounded-[1.75rem] p-8">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/12">
+                <b.icon className="h-6 w-6 text-primary" />
+              </span>
+              <h3 className="mt-6 font-display text-lg font-bold">{b.kicker}</h3>
+              <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
+                {b.items.map((t) => (
+                  <p key={t.slice(0, 24)}>{t}</p>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal delay={120}>
+        <div className="glass mt-6 grid gap-6 rounded-[1.75rem] p-8 sm:p-12 lg:grid-cols-[auto_1fr] lg:items-center">
+          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/12">
+            <Handshake className="h-7 w-7 text-primary" />
+          </span>
+          <div>
+            <h3 className="font-display text-xl font-bold">Предложения партнёрам</h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Наша компания открыта для совместной работы. Мы готовы предложить оптимальные условия
+              для производства упаковки и гибкие условия для доверенных компаний. Знание, доверие и
+              репутация — гарантия нашего успеха!
+            </p>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
