@@ -1,26 +1,26 @@
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
-import cupsRef from "@/assets/like-pack-cups.png.asset.json";
-import plant from "@/assets/kz-plant.jpg";
-import print from "@/assets/kz-print.jpg";
-import engineer from "@/assets/kz-engineer.jpg";
-import hero from "@/assets/kz-hero.jpg";
-import containers from "@/assets/kz-containers.jpg";
-import lids from "@/assets/kz-lids.jpg";
-import food from "@/assets/kz-food.jpg";
-import retail from "@/assets/kz-retail.jpg";
+import gal1 from "@/assets/gal-1.jpg";
+import gal2 from "@/assets/gal-2.jpg";
+import gal3 from "@/assets/gal-3.jpg";
+import gal4 from "@/assets/gal-4.jpg";
+import heroMockup from "@/assets/hero-mockup.jpg";
+import brandDetail from "@/assets/brand-detail.jpg";
+import catCups from "@/assets/cat-cups.jpg";
+import catLids from "@/assets/cat-lids.jpg";
+import catPackaging from "@/assets/cat-packaging.jpg";
 import { Reveal } from "./reveal";
 
 const images = [
-  { src: cupsRef.url, alt: "Стаканы Like Pack с национальным орнаментом и печатью" },
-  { src: plant, alt: "Роботизированная линия производства" },
-  { src: print, alt: "Шестицветная офсетная печать на стаканах" },
-  { src: containers, alt: "Полипропиленовые контейнеры с крышками" },
-  { src: hero, alt: "Брендированная упаковка Like Pack" },
-  { src: engineer, alt: "Инженерное обслуживание оборудования" },
-  { src: lids, alt: "Крышки для стаканов" },
-  { src: food, alt: "Упаковка для пищевой промышленности" },
-  { src: retail, alt: "Упаковка на полке в розничной торговле" },
+  { src: gal1, alt: "Брендированный кофейный стакан в кофейне" },
+  { src: gal2, alt: "Комплект брендированной посуды для доставки" },
+  { src: brandDetail, alt: "Чёрные стаканы с лаймовым логотипом" },
+  { src: catCups, alt: "Пластиковые стаканы с печатью" },
+  { src: gal3, alt: "Производственная линия" },
+  { src: heroMockup, alt: "Мокап брендированной посуды" },
+  { src: gal4, alt: "Десертные стаканчики с логотипом" },
+  { src: catLids, alt: "Крышки с брендированием" },
+  { src: catPackaging, alt: "Упаковка в фирменном стиле" },
 ];
 
 export function Gallery() {
@@ -50,9 +50,9 @@ export function Gallery() {
   return (
     <section id="gallery" className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
       <Reveal>
-        <span className="text-xs uppercase tracking-[0.22em] text-primary">Галерея</span>
+        <span className="text-xs uppercase tracking-[0.22em] text-primary">Портфолио</span>
         <h2 className="mt-4 text-[clamp(1.8rem,4.4vw,3rem)] font-bold leading-[1.08]">
-          Производство и продукция
+          Проекты, которые видно
         </h2>
       </Reveal>
 
