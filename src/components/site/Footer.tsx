@@ -3,9 +3,8 @@ import { Logo } from "./Logo";
 const nav = [
   { label: "О компании", href: "#about" },
   { label: "Продукция", href: "#products" },
-  { label: "Производство", href: "#production" },
-  { label: "Технологии", href: "#tech" },
-  { label: "Партнёрам", href: "#partners" },
+  { label: "Брендирование", href: "#branding" },
+  { label: "Доставка", href: "#delivery" },
   { label: "Контакты", href: "#contact" },
 ];
 
@@ -16,8 +15,7 @@ export function Footer() {
         <div>
           <Logo compact />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            ТОО «ХВАМДА МАШИНЕРИ KZ» (ТОО «ХМД») — производство современной полипропиленовой
-            упаковки в Республике Казахстан.
+            Производство и брендирование одноразовой посуды и упаковки с 2011 года.
           </p>
         </div>
 
@@ -36,24 +34,24 @@ export function Footer() {
 
         <div className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.2em] text-primary">Контакты</span>
-          <a href="tel:+77000000000" className="text-sm font-semibold transition-colors hover:text-primary">
-            +7 (700) 000-00-00
+          <a href="tel:+74951362374" className="text-sm font-semibold transition-colors hover:text-primary">
+            +7 (495) 136-23-74
           </a>
           <a
-            href="mailto:info@like-pack.qz"
+            href="mailto:info@smartplast.org"
             className="text-sm text-muted-foreground transition-colors hover:text-primary"
           >
-            info@like-pack.qz
+            info@smartplast.org
           </a>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Республика Казахстан
+            Московская обл., ГО Ногинск, пос. Затишье, тер. Технопарк Успенский
           </p>
         </div>
 
         <div className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.2em] text-primary">Мы в сети</span>
           <div className="flex gap-3">
-            {["TG", "IG", "WA"].map((s) => (
+            {["TG", "VK", "WA"].map((s) => (
               <a
                 key={s}
                 href="#contact"
@@ -74,8 +72,8 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
-          <span>© {new Date().getFullYear()} like-pack.qz. Все права защищены.</span>
-          <span>Упаковка Made in Kazakhstan</span>
+          <span>© {new Date().getFullYear()} СмартПласт. Все права защищены.</span>
+          <span>Одноразовая посуда с брендированием под заказ</span>
         </div>
       </div>
     </footer>

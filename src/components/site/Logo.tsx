@@ -1,19 +1,17 @@
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <a href="#top" className="group flex shrink-0 items-center gap-3">
-      <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-6">
-        <span className="font-display text-sm font-bold">lp</span>
+    <a href="#top" className="group flex shrink-0 items-center gap-2.5">
+      <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-6">
+        <span className="font-display text-sm font-bold">С</span>
       </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-base font-bold tracking-tight sm:text-lg">
-          like-pack<span className="text-primary">.qz</span>
+      <span className="font-display text-base font-bold tracking-tight sm:text-lg">
+        Смарт<span className="text-primary">Пласт</span>
+      </span>
+      {!compact && (
+        <span className="ml-1 hidden text-[10px] uppercase tracking-[0.2em] text-muted-foreground lg:inline">
+          branding
         </span>
-        {!compact && (
-          <span className="mt-1 hidden text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:block">
-            Производство упаковки в Казахстане
-          </span>
-        )}
-      </span>
+      )}
     </a>
   );
 }
