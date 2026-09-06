@@ -4,8 +4,9 @@ import gal1 from "@/assets/gal-1.jpg";
 import gal2 from "@/assets/gal-2.jpg";
 import gal3 from "@/assets/gal-3.jpg";
 import gal4 from "@/assets/gal-4.jpg";
-import heroMockup from "@/assets/hero-mockup.jpg";
-import brandDetail from "@/assets/brand-detail.jpg";
+import heroCupsAsset from "@/assets/hero-cups.png.asset.json";
+import aboutCupAsset from "@/assets/about-cup.jpg.asset.json";
+
 import catCups from "@/assets/cat-cups.jpg";
 import catLids from "@/assets/cat-lids.jpg";
 import catPackaging from "@/assets/cat-packaging.jpg";
