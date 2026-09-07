@@ -132,40 +132,28 @@ export function About() {
 
 const products = [
   {
-    title: "Стаканы",
-    text: "Пластиковые и бумажные, от 100 до 500 мл, печать по всей поверхности.",
+    title: "Стакан матовый 500 мл",
+    text: "Базовая модель из полипропилена без печати — готова к отгрузке со склада.",
     img: catCups,
     icon: CupSoda,
   },
   {
-    title: "Крышки",
-    text: "Плоские и купольные с тиснением или печатью логотипа.",
-    img: catLids,
-    icon: Layers,
+    title: "Стакан матовый 500 мл с печатью «Qazaqstan»",
+    text: "Национальная серия: офсетная печать в шесть цветов.",
+    img: aboutCup.url,
+    icon: CupSoda,
   },
   {
-    title: "Контейнеры",
-    text: "Для доставки и витрины: прозрачные, чёрные, с ин-мольд этикеткой.",
-    img: catContainers,
-    icon: Boxes,
+    title: "Стакан матовый 500 мл с праздничной печатью",
+    text: "Сезонная и праздничная серия для розницы и HoReCa.",
+    img: heroCups.url,
+    icon: CupSoda,
   },
   {
-    title: "Соусники",
-    text: "Мелкая тара 30–100 мл с брендированной крышкой.",
-    img: catSauce,
-    icon: Package,
-  },
-  {
-    title: "Столовые приборы",
-    text: "Наборы в индивидуальной упаковке с вашим дизайном.",
-    img: catCutlery,
-    icon: Utensils,
-  },
-  {
-    title: "Упаковка",
-    text: "Боксы, пакеты и холдеры в единой фирменной стилистике.",
-    img: catPackaging,
-    icon: ShoppingBag,
+    title: "Стакан матовый 500 мл с печатью «сердечки»",
+    text: "Яркий узор, стойкие краски CMYK и Pantone.",
+    img: prodLine.url,
+    icon: CupSoda,
   },
 ];
 
