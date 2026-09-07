@@ -16,7 +16,7 @@ export function Footer() {
         <div>
           <Logo compact />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Производство и брендирование одноразовой посуды и упаковки с 2011 года.
+            Торговая марка like-pack.qz — производство матовых полипропиленовых стаканов с офсетной печатью.
           </p>
         </div>
 
@@ -73,8 +73,8 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
-          <span>© {new Date().getFullYear()} СмартПласт. Все права защищены.</span>
-          <span>Одноразовая посуда с брендированием под заказ</span>
+          <span>© {new Date().getFullYear()} like-pack.qz · ТОО «ХВАМДА МАШИНЕРИ KZ». Все права защищены.</span>
+          <span>Матовые стаканы 500 мл с печатью под заказ</span>
         </div>
       </div>
     </footer>
