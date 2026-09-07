@@ -1,26 +1,21 @@
 import {
   BadgeCheck,
-  Boxes,
   CupSoda,
   Factory,
   Gauge,
   Handshake,
-  Layers,
   Package,
   Palette,
-  ShoppingBag,
   Sparkles,
   Truck,
-  Utensils,
   Wallet,
 } from "lucide-react";
 import brandDetail from "@/assets/about-cup.jpg.asset.json";
+import aboutCup from "@/assets/about-cup.jpg.asset.json";
+import heroCups from "@/assets/hero-cups.png.asset.json";
+import prodLine from "@/assets/prod-line.jpg.asset.json";
+import prodMachine from "@/assets/prod-machine.jpg.asset.json";
 import catCups from "@/assets/cat-cups.jpg";
-import catLids from "@/assets/cat-lids.jpg";
-import catContainers from "@/assets/cat-containers.jpg";
-import catSauce from "@/assets/cat-sauce.jpg";
-import catCutlery from "@/assets/cat-cutlery.jpg";
-import catPackaging from "@/assets/cat-packaging.jpg";
 import { Reveal } from "./reveal";
 
 function SectionTitle({
