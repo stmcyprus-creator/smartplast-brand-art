@@ -4,6 +4,7 @@ import { Logo } from "./Logo";
 
 const nav = [
   { label: "О компании", href: "#about" },
+  { label: "Производство", href: "#production" },
   { label: "Продукция", href: "#products" },
   { label: "Брендирование", href: "#branding" },
   { label: "Доставка", href: "#delivery" },

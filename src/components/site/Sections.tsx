@@ -157,8 +157,8 @@ export function Products() {
     <section id="products" className="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
       <SectionTitle
         kicker="Продукция"
-        title="Что мы брендируем"
-        text="Печатаем на любой позиции ассортимента — можно собрать полный комплект в едином стиле."
+        title="Готовая продукция к реализации"
+        text="Сейчас на складе доступны матовые полипропиленовые стаканы 500 мл — без печати и с офсетной печатью."
       />
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p, i) => (
