@@ -1,15 +1,15 @@
-import logoLime from "@/assets/logo-lime.svg";
+import logoLime from "@/assets/logo-lime-h.svg";
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <a href="#top" className="group flex shrink-0 items-center gap-2.5">
+    <a href="#top" className="group flex shrink-0 items-center">
       <img
         src={logoLime}
         alt="Like Pack"
-        width={2550}
-        height={1500}
+        width={416}
+        height={100}
         className={`w-auto transition-transform duration-300 group-hover:scale-[1.03] ${
-          compact ? "h-11" : "h-11"
+          compact ? "h-10" : "h-12 lg:h-14"
         }`}
       />
     </a>
