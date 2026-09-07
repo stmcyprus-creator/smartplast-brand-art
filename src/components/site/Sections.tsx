@@ -1,26 +1,21 @@
 import {
   BadgeCheck,
-  Boxes,
   CupSoda,
   Factory,
   Gauge,
   Handshake,
-  Layers,
   Package,
   Palette,
-  ShoppingBag,
   Sparkles,
   Truck,
-  Utensils,
   Wallet,
 } from "lucide-react";
 import brandDetail from "@/assets/about-cup.jpg.asset.json";
+import aboutCup from "@/assets/about-cup.jpg.asset.json";
+import heroCups from "@/assets/hero-cups.png.asset.json";
+import prodLine from "@/assets/prod-line.jpg.asset.json";
+import prodMachine from "@/assets/prod-machine.jpg.asset.json";
 import catCups from "@/assets/cat-cups.jpg";
-import catLids from "@/assets/cat-lids.jpg";
-import catContainers from "@/assets/cat-containers.jpg";
-import catSauce from "@/assets/cat-sauce.jpg";
-import catCutlery from "@/assets/cat-cutlery.jpg";
-import catPackaging from "@/assets/cat-packaging.jpg";
 import { Reveal } from "./reveal";
 
 function SectionTitle({
@@ -132,40 +127,28 @@ export function About() {
 
 const products = [
   {
-    title: "Стаканы",
-    text: "Пластиковые и бумажные, от 100 до 500 мл, печать по всей поверхности.",
+    title: "Стакан матовый 500 мл",
+    text: "Базовая модель из полипропилена без печати — готова к отгрузке со склада.",
     img: catCups,
     icon: CupSoda,
   },
   {
-    title: "Крышки",
-    text: "Плоские и купольные с тиснением или печатью логотипа.",
-    img: catLids,
-    icon: Layers,
+    title: "Стакан матовый 500 мл с печатью «Qazaqstan»",
+    text: "Национальная серия: офсетная печать в шесть цветов.",
+    img: aboutCup.url,
+    icon: CupSoda,
   },
   {
-    title: "Контейнеры",
-    text: "Для доставки и витрины: прозрачные, чёрные, с ин-мольд этикеткой.",
-    img: catContainers,
-    icon: Boxes,
+    title: "Стакан матовый 500 мл с праздничной печатью",
+    text: "Сезонная и праздничная серия для розницы и HoReCa.",
+    img: heroCups.url,
+    icon: CupSoda,
   },
   {
-    title: "Соусники",
-    text: "Мелкая тара 30–100 мл с брендированной крышкой.",
-    img: catSauce,
-    icon: Package,
-  },
-  {
-    title: "Столовые приборы",
-    text: "Наборы в индивидуальной упаковке с вашим дизайном.",
-    img: catCutlery,
-    icon: Utensils,
-  },
-  {
-    title: "Упаковка",
-    text: "Боксы, пакеты и холдеры в единой фирменной стилистике.",
-    img: catPackaging,
-    icon: ShoppingBag,
+    title: "Стакан матовый 500 мл с печатью «сердечки»",
+    text: "Яркий узор, стойкие краски CMYK и Pantone.",
+    img: prodLine.url,
+    icon: CupSoda,
   },
 ];
 
@@ -174,8 +157,8 @@ export function Products() {
     <section id="products" className="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
       <SectionTitle
         kicker="Продукция"
-        title="Что мы брендируем"
-        text="Печатаем на любой позиции ассортимента — можно собрать полный комплект в едином стиле."
+        title="Готовая продукция к реализации"
+        text="Сейчас на складе доступны матовые полипропиленовые стаканы 500 мл — без печати и с офсетной печатью."
       />
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p, i) => (
@@ -252,7 +235,7 @@ const advantages = [
 export function Why() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
-      <SectionTitle kicker="Преимущества" title="Почему выбирают СмартПласт" />
+      <SectionTitle kicker="Преимущества" title="Почему выбирают Like Pack" />
       <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {advantages.map((a, i) => (
           <Reveal key={a.title} delay={i * 70}>
@@ -354,6 +337,27 @@ export function Production() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={80}>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          {[
+            { src: prodLine.url, alt: "Линия офсетной печати: стаканы с печатью «сердечки»" },
+            { src: prodMachine.url, alt: "Инжекционно-литьевая машина NINGBO HWAMDA MACHINERY" },
+          ].map((ph) => (
+            <div
+              key={ph.alt}
+              className="grain overflow-hidden rounded-[1.75rem] border border-border"
+            >
+              <img
+                src={ph.src}
+                alt={ph.alt}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
       <Reveal delay={120}>
         <div className="glass mt-6 grid gap-6 rounded-[1.75rem] p-8 sm:p-12 lg:grid-cols-[auto_1fr] lg:items-center">

@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
-import { About, Delivery, Process, Products, Stats, Why } from "@/components/site/Sections";
+import { About, Delivery, Process, Production, Products, Stats, Why } from "@/components/site/Sections";
 import { Gallery } from "@/components/site/Gallery";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
-const title = "СмартПласт — брендированная одноразовая посуда под заказ";
+const title = "like-pack.qz — матовые стаканы 500 мл из полипропилена";
 const description =
-  "Производим одноразовую посуду и упаковку с вашим логотипом: дизайн, образец, тираж от 10 000 шт. за 14 дней. Собственное производство в Московской области.";
+  "ТОО «ХВАМДА МАШИНЕРИ KZ»: производство матовых полипропиленовых стаканов 500 мл с офсетной печатью в шесть цветов. Роботизированное производство в Республике Казахстан.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,6 +32,7 @@ function Index() {
         <Hero />
         <Stats />
         <About />
+        <Production />
         <Products />
         <Process />
         <Why />
