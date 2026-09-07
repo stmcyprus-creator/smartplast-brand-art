@@ -235,7 +235,7 @@ const advantages = [
 export function Why() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
-      <SectionTitle kicker="Преимущества" title="Почему выбирают СмартПласт" />
+      <SectionTitle kicker="Преимущества" title="Почему выбирают Like Pack" />
       <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {advantages.map((a, i) => (
           <Reveal key={a.title} delay={i * 70}>
@@ -337,6 +337,27 @@ export function Production() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={80}>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          {[
+            { src: prodLine.url, alt: "Линия офсетной печати: стаканы с печатью «сердечки»" },
+            { src: prodMachine.url, alt: "Инжекционно-литьевая машина NINGBO HWAMDA MACHINERY" },
+          ].map((ph) => (
+            <div
+              key={ph.alt}
+              className="grain overflow-hidden rounded-[1.75rem] border border-border"
+            >
+              <img
+                src={ph.src}
+                alt={ph.alt}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
       <Reveal delay={120}>
         <div className="glass mt-6 grid gap-6 rounded-[1.75rem] p-8 sm:p-12 lg:grid-cols-[auto_1fr] lg:items-center">
