@@ -1,13 +1,59 @@
 import { useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, MessageCircle } from "lucide-react";
 import { Reveal } from "./reveal";
+import {
+  EMAIL,
+  PHONE_CITY,
+  PHONE_CITY_TEL,
+  PHONE_MOBILE,
+  PHONE_MOBILE_TEL,
+  WHATSAPP_URL,
+} from "@/lib/contacts";
 
 const fieldClass =
   "w-full rounded-2xl border border-input bg-background/50 px-5 py-4 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary";
 
+const quantities = [
+  "10 000 – 30 000 стаканов",
+  "30 000 – 100 000 стаканов",
+  "100 000 – 500 000 стаканов",
+  "более 500 000 стаканов",
+];
+
+const prints = [
+  "Без печати (матовый стакан 500 мл)",
+  "Логотип в 1–2 цвета",
+  "Полноцветная печать (CMYK)",
+  "Печать Pantone / фирменные цвета",
+  "Печать в шесть цветов",
+];
+
+const terms = ["Срочно — до 14 дней", "14–21 день", "21–30 дней", "Плановые поставки"];
+
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [agree, setAgree] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    const v = (k: string) => String(f.get(k) ?? "").trim();
+    const body = [
+      `Имя: ${v("name")}`,
+      `Телефон: ${v("phone")}`,
+      `Email: ${v("email")}`,
+      `Количество стаканов: ${v("quantity")}`,
+      `Печать: ${v("print")}`,
+      `Срок поставки: ${v("term")}`,
+      "",
+      `Комментарий: ${v("comment") || "—"}`,
+    ].join("\n");
+
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+      "Заявка с сайта like-pack.qz",
+    )}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  };
 
   return (
     <section id="contact" className="relative overflow-hidden py-24 lg:py-28">
@@ -23,23 +69,32 @@ export function Contact() {
                 Давайте сделаем ваш бренд <span className="text-lime-gradient">заметнее</span>
               </h2>
               <p className="mt-6 max-w-lg text-muted-foreground sm:text-lg">
-                Расскажите о задаче — подготовим решение, предложим материалы и рассчитаем стоимость
-                проекта
+                Укажите количество стаканов, вид печати и желаемый срок поставки — подготовим расчёт
+                и предложим решение
               </p>
               <div className="mt-10 space-y-2 text-sm">
                 <a
-                  href="tel:+77005303141"
+                  href={`tel:${PHONE_MOBILE_TEL}`}
                   className="block font-display text-2xl font-bold transition-colors hover:text-primary"
                 >
-                  +7 700 530-31-41
+                  {PHONE_MOBILE}
                 </a>
                 <a
-                  href="tel:+77213303141"
+                  href={`tel:${PHONE_CITY_TEL}`}
                   className="block font-semibold transition-colors hover:text-primary"
                 >
-                  8 7213 303-141
+                  {PHONE_CITY}
                 </a>
               </div>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center gap-2 rounded-full border border-primary/50 px-6 py-3.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Написать в WhatsApp
+              </a>
             </Reveal>
           </div>
 
@@ -51,43 +106,90 @@ export function Contact() {
                 </span>
                 <h3 className="mt-6 font-display text-2xl font-bold">Заявка отправлена</h3>
                 <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-                  Спасибо! Менеджер свяжется с вами в течение рабочего дня и подготовит расчёт по
-                  вашему проекту.
+                  Заявка ушла на {EMAIL}. Менеджер свяжется с вами в течение рабочего дня и
+                  подготовит расчёт.
                 </p>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground"
+                >
+                  <MessageCircle className="h-4 w-4" /> Ускорить в WhatsApp
+                </a>
                 <button
                   type="button"
                   onClick={() => {
                     setSent(false);
                     setAgree(false);
                   }}
-                  className="mt-8 rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
+                  className="mt-4 rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
                 >
                   Отправить ещё одну заявку
                 </button>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-                className="space-y-4"
-              >
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <input required name="name" placeholder="Имя" className={fieldClass} />
                   <input
                     required
+                    maxLength={100}
+                    name="name"
+                    placeholder="Имя"
+                    className={fieldClass}
+                  />
+                  <input
+                    required
+                    maxLength={30}
                     name="phone"
                     type="tel"
                     placeholder="Телефон"
                     className={fieldClass}
                   />
                 </div>
-                <input required name="email" type="email" placeholder="Email" className={fieldClass} />
+                <input
+                  required
+                  maxLength={255}
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className={fieldClass}
+                />
+                <select required name="quantity" defaultValue="" className={fieldClass}>
+                  <option value="" disabled>
+                    Количество стаканов
+                  </option>
+                  {quantities.map((q) => (
+                    <option key={q} value={q}>
+                      {q}
+                    </option>
+                  ))}
+                </select>
+                <select required name="print" defaultValue="" className={fieldClass}>
+                  <option value="" disabled>
+                    Печать
+                  </option>
+                  {prints.map((p) => (
+                    <option key={p} value={p}>
+                      {p}
+                    </option>
+                  ))}
+                </select>
+                <select required name="term" defaultValue="" className={fieldClass}>
+                  <option value="" disabled>
+                    Срок поставки
+                  </option>
+                  {terms.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
                 <textarea
                   name="comment"
-                  rows={4}
-                  placeholder="Комментарий: позиции, тираж, сроки"
+                  rows={3}
+                  maxLength={1000}
+                  placeholder="Комментарий: макет, цвета, адрес доставки"
                   className={`${fieldClass} resize-none`}
                 />
                 <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-muted-foreground">
@@ -104,7 +206,7 @@ export function Contact() {
                   type="submit"
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--shadow-glow)]"
                 >
-                  Получить предложение
+                  Отправить заявку на {EMAIL}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </form>
