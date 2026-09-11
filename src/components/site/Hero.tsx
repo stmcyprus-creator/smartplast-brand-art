@@ -6,7 +6,7 @@ import { Reveal } from "./reveal";
 const CupScene = lazy(() => import("./CupScene"));
 
 const floating = [
-  { icon: Printer, text: "Печать от 10 000 шт.", pos: "left-2 top-6 sm:left-6 lg:left-10" },
+  { icon: Printer, text: "Печать от 10 000 шт.", pos: "left-2 top-28 sm:left-6 lg:left-10" },
   {
     icon: Clock,
     text: "Срок производства от 14 дней",
