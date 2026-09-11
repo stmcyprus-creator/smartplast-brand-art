@@ -250,7 +250,7 @@ function Cup({ progress, lite }: { progress: RefObject<number>; lite: boolean })
         </mesh>
       </group>
 
-      <Drops count={lite ? 14 : 46} />
+      
     </group>
   );
 }
