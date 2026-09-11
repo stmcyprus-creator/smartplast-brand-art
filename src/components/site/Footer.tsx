@@ -35,14 +35,14 @@ export function Footer() {
 
         <div className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.2em] text-primary">Контакты</span>
-          <a href="tel:+74951362374" className="text-sm font-semibold transition-colors hover:text-primary">
-            +7 (495) 136-23-74
+          <a href="tel:+77005303141" className="text-sm font-semibold transition-colors hover:text-primary">
+            +7 700 530-31-41
           </a>
           <a
-            href="mailto:info@smartplast.org"
+            href="mailto:hmd_kz@mail.ru"
             className="text-sm text-muted-foreground transition-colors hover:text-primary"
           >
-            info@smartplast.org
+            hmd_kz@mail.ru
           </a>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
             Московская обл., ГО Ногинск, пос. Затишье, тер. Технопарк Успенский

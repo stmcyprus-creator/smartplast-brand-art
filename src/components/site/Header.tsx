@@ -46,11 +46,11 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="tel:+74951362374"
+            href="tel:+77005303141"
             className="hidden items-center gap-2 text-sm font-semibold transition-colors hover:text-primary md:flex"
           >
             <Phone className="h-4 w-4 shrink-0 text-primary" />
-            +7 (495) 136-23-74
+            +7 700 530-31-41
           </a>
           <a
             href="#contact"
@@ -84,10 +84,10 @@ export function Header() {
             ))}
           </nav>
           <a
-            href="tel:+74951362374"
+            href="tel:+77005303141"
             className="mt-3 flex items-center gap-2 px-3 text-sm font-semibold text-primary"
           >
-            <Phone className="h-4 w-4" /> +7 (495) 136-23-74
+            <Phone className="h-4 w-4" /> +7 700 530-31-41
           </a>
           <a
             href="#contact"

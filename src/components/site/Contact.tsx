@@ -28,16 +28,16 @@ export function Contact() {
               </p>
               <div className="mt-10 space-y-2 text-sm">
                 <a
-                  href="tel:+74951362374"
+                  href="tel:+77005303141"
                   className="block font-display text-2xl font-bold transition-colors hover:text-primary"
                 >
-                  +7 (495) 136-23-74
+                  +7 700 530-31-41
                 </a>
                 <a
-                  href="mailto:info@smartplast.org"
+                  href="mailto:hmd_kz@mail.ru"
                   className="block text-muted-foreground transition-colors hover:text-primary"
                 >
-                  info@smartplast.org
+                  hmd_kz@mail.ru
                 </a>
               </div>
             </Reveal>
