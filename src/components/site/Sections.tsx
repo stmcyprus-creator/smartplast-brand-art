@@ -10,7 +10,6 @@ import {
   Truck,
   Wallet,
 } from "lucide-react";
-import brandDetail from "@/assets/about-cup.jpg.asset.json";
 import aboutCup from "@/assets/about-cup.jpg.asset.json";
 import heroCups from "@/assets/hero-cups.png.asset.json";
 import prodRobot from "@/assets/prod-robot.jpg";
