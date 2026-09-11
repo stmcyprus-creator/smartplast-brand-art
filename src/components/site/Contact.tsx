@@ -34,6 +34,12 @@ export function Contact() {
                   +7 700 530-31-41
                 </a>
                 <a
+                  href="tel:+77213303141"
+                  className="block font-semibold transition-colors hover:text-primary"
+                >
+                  8 7213 303-141
+                </a>
+                <a
                   href="mailto:hmd_kz@mail.ru"
                   className="block text-muted-foreground transition-colors hover:text-primary"
                 >

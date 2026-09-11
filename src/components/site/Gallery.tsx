@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
-import gal1 from "@/assets/gal-1.jpg";
-import gal4 from "@/assets/gal-4.jpg";
 import heroCupsAsset from "@/assets/hero-cups.png.asset.json";
 import aboutCupAsset from "@/assets/about-cup.jpg.asset.json";
 import prodLine from "@/assets/prod-line.jpg.asset.json";
@@ -13,8 +11,6 @@ const images = [
   { src: aboutCupAsset.url, alt: "Стакан с печатью «Qazaqstan»" },
   { src: prodLine.url, alt: "Стаканы с печатью «сердечки» на линии" },
   { src: heroCupsAsset.url, alt: "Стаканы с праздничной печатью" },
-  { src: gal1, alt: "Матовый стакан 500 мл с брендированием" },
-  { src: gal4, alt: "Стаканы с печатью логотипа" },
 ];
 
 export function Gallery() {
