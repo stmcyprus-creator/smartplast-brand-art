@@ -13,7 +13,7 @@ const description =
 
 export const Route = createFileRoute("/order")({
   validateSearch: (search: Record<string, unknown>) => ({
-    model: typeof search.model === "string" ? search.model : undefined,
+    model: typeof search['model'] === "string" ? (search['model'] as string) : undefined,
   }),
   head: () => ({
     meta: [

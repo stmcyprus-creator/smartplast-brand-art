@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { leadMailtoUrl, saveLead } from "@/lib/leads";
 import { Reveal } from "./reveal";
 import {
   EMAIL,

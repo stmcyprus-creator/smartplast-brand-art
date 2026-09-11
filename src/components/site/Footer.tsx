@@ -26,7 +26,7 @@ export function Footer() {
           <Link to="/partners" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Партнёрам
           </Link>
-          <Link to="/order" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link to="/order" search={{}} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Заявка на заказ
           </Link>
           {nav.map((n) => (
