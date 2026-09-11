@@ -107,7 +107,7 @@ function Partners() {
             </ol>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
-                to="/order" search={{}}
+                to="/order" search={{ model: undefined }}
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--shadow-glow)]"
               >
                 <Handshake className="h-4 w-4" /> Оформить заявку

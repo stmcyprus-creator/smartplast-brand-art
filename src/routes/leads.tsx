@@ -137,7 +137,7 @@ function Leads() {
                 Как только клиент отправит форму на сайте, заявка появится в этом списке.
               </p>
               <Link
-                to="/order" search={{}}
+                to="/order" search={{ model: undefined }}
                 className="mt-7 inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground"
               >
                 Открыть форму заявки

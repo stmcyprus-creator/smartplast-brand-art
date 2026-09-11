@@ -81,7 +81,7 @@ export function Header() {
             <span className="hidden sm:inline">WhatsApp</span>
           </a>
           <Link
-            to="/order" search={{}}
+            to="/order" search={{ model: undefined }}
             className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--shadow-glow)] sm:inline-flex"
           >
             Оформить заявку
@@ -136,7 +136,7 @@ export function Header() {
             <MessageCircle className="h-4 w-4" /> Написать в WhatsApp
           </a>
           <Link
-            to="/order" search={{}}
+            to="/order" search={{ model: undefined }}
             onClick={() => setOpen(false)}
             className="mt-4 block rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
           >
