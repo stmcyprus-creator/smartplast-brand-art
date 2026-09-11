@@ -77,7 +77,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-5xl px-5 pt-24 text-center lg:px-8">
+        <div className="relative mx-auto w-full max-w-5xl px-5 pt-24 pb-32 text-center lg:px-8">
           <Reveal>
             <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.18em] text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
