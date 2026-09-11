@@ -45,7 +45,7 @@ export function Footer() {
             hmd_kz@mail.ru
           </a>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Московская обл., ГО Ногинск, пос. Затишье, тер. Технопарк Успенский
+            Республика Казахстан — доставка до адреса
           </p>
         </div>
 
