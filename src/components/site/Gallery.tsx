@@ -1,17 +1,22 @@
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
-import heroCupsAsset from "@/assets/hero-cups.png.asset.json";
-import aboutCupAsset from "@/assets/about-cup.jpg.asset.json";
+import heroCup from "@/assets/hero-cup-closeup.jpg.asset.json";
+import cupHandCity from "@/assets/cup-hand-city.jpg.asset.json";
+import cupCollage from "@/assets/cup-collage.jpg.asset.json";
+import cupsLifestyle from "@/assets/cups-lifestyle.jpg.asset.json";
 import prodLine from "@/assets/prod-line.jpg.asset.json";
 import catCups from "@/assets/cat-cups.jpg";
 import { Reveal } from "./reveal";
 
 const images = [
   { src: catCups, alt: "Стакан матовый 500 мл" },
-  { src: aboutCupAsset.url, alt: "Стакан с печатью «Qazaqstan»" },
-  { src: prodLine.url, alt: "Стаканы с печатью «сердечки» на линии" },
-  { src: heroCupsAsset.url, alt: "Стаканы с праздничной печатью" },
+  { src: heroCup.url, alt: "Стакан с печатью «Qazaqstan» крупным планом" },
+  { src: cupHandCity.url, alt: "Матовый стакан 500 мл с печатью «Qazaqstan»" },
+  { src: cupCollage.url, alt: "Серия стаканов с национальным орнаментом" },
+  { src: cupsLifestyle.url, alt: "Стаканы «Qazaqstan» в использовании" },
+  { src: prodLine.url, alt: "Стаканы с печатью на производственной линии" },
 ];
+
 
 export function Gallery() {
   const [index, setIndex] = useState<number | null>(null);
