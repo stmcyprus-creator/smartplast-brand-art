@@ -6,10 +6,10 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       <img
         src={logoLime}
         alt="Like Pack"
-        width={416}
+        width={350}
         height={100}
         className={`w-auto transition-transform duration-300 group-hover:scale-[1.03] ${
-          compact ? "h-10" : "h-12 lg:h-14"
+          compact ? "h-11" : "h-14 lg:h-16"
         }`}
       />
     </a>
