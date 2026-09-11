@@ -10,11 +10,12 @@ import {
   Truck,
   Wallet,
 } from "lucide-react";
-import brandDetail from "@/assets/about-cup.jpg.asset.json";
 import aboutCup from "@/assets/about-cup.jpg.asset.json";
 import heroCups from "@/assets/hero-cups.png.asset.json";
-import prodLine from "@/assets/prod-line.jpg.asset.json";
-import prodMachine from "@/assets/prod-machine.jpg.asset.json";
+import prodRobot from "@/assets/prod-robot.jpg";
+import prodPrint from "@/assets/prod-print.jpg";
+import promoTrio from "@/assets/promo-1-square.jpg";
+import promoStory from "@/assets/promo-4-story.jpg";
 import catCups from "@/assets/cat-cups.jpg";
 import { lazy, Suspense } from "react";
 import { ClientOnly } from "@tanstack/react-router";
@@ -115,11 +116,11 @@ export function About() {
             <div className="absolute -inset-4 rounded-[2.5rem] bg-primary/15 blur-3xl" />
             <div className="grain relative overflow-hidden rounded-[2.5rem] border border-border">
               <img
-                src={brandDetail.url}
-                alt="Пластиковый стакан с брендированной печатью крупным планом"
+                src={promoTrio}
+                alt="Три стакана Like Pack 500 мл с печатью Qazaqstan"
                 loading="lazy"
-                width={1200}
-                height={1408}
+                width={1080}
+                height={1080}
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
@@ -152,7 +153,7 @@ const products = [
   {
     title: "Стакан матовый 500 мл с печатью «сердечки»",
     text: "Яркий узор, стойкие краски CMYK и Pantone.",
-    img: prodLine.url,
+    img: promoStory,
     icon: CupSoda,
   },
 ];
@@ -361,8 +362,8 @@ export function Production() {
       <Reveal delay={80}>
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
           {[
-            { src: prodLine.url, alt: "Линия офсетной печати: стаканы с печатью «сердечки»" },
-            { src: prodMachine.url, alt: "Инжекционно-литьевая машина NINGBO HWAMDA MACHINERY" },
+            { src: prodPrint, alt: "Шестицветная офсетная печать на стаканах" },
+            { src: prodRobot, alt: "Роботизированная инжекционно-литьевая линия" },
           ].map((ph) => (
             <div
               key={ph.alt}
