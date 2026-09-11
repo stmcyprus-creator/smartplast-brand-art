@@ -14,8 +14,10 @@ const nav = [
 ];
 
 const pages = [
+  { label: "Каталог", to: "/catalog" as const },
   { label: "Партнёрам", to: "/partners" as const },
-  { label: "Заявка", to: "/order" as const },
+  { label: "Медиа-кит", to: "/promo" as const },
+  { label: "Заявки", to: "/leads" as const },
 ];
 
 export function Header() {
@@ -107,15 +109,6 @@ export function Header() {
               >
                 {item.label}
               </a>
-            ))}
-            {pages.map((p) => (
-              <Link
-                key={p.to}
-                to={p.to}
-                className="relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {p.label}
-              </Link>
             ))}
             {pages.map((p) => (
               <Link
