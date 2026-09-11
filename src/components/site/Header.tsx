@@ -36,9 +36,9 @@ export function Header() {
       }`}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 lg:px-8">
-        <div className="flex min-w-0 items-center gap-10">
+        <div className="flex min-w-0 items-center gap-8">
           <Logo />
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-5 xl:flex">
             {nav.map((item) => (
               <a
                 key={item.href}
@@ -88,7 +88,7 @@ export function Header() {
             type="button"
             aria-label="Меню"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border lg:hidden"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border xl:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -96,7 +96,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="glass mx-5 mt-3 rounded-3xl p-5 lg:hidden">
+        <div className="glass mx-5 mt-3 rounded-3xl p-5 xl:hidden">
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (
               <a
