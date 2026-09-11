@@ -39,12 +39,6 @@ export function Contact() {
                 >
                   8 7213 303-141
                 </a>
-                <a
-                  href="mailto:hmd_kz@mail.ru"
-                  className="block text-muted-foreground transition-colors hover:text-primary"
-                >
-                  hmd_kz@mail.ru
-                </a>
               </div>
             </Reveal>
           </div>
