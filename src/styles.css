@@ -167,3 +167,39 @@
 @utility animate-float {
   animation: float-soft 6s ease-in-out infinite;
 }
+
+@keyframes cupRotate {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes cupFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+@utility hero-cup {
+  animation:
+    cupRotate 12s ease-in-out infinite,
+    cupFloat 5s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cup {
+    animation: none;
+  }
+}

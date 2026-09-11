@@ -59,7 +59,7 @@ export function Hero() {
 
         {/* 3D cup */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-[42vh] w-full max-w-[300px] sm:h-[70vh] sm:max-w-[520px]">
+          <div className="hero-cup h-[42vh] w-full max-w-[300px] sm:h-[70vh] sm:max-w-[520px]">
             <ClientOnly fallback={null}>
               <Suspense fallback={null}>
                 <CupScene progress={progress} />
