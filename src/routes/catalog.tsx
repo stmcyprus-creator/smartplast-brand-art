@@ -4,7 +4,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/reveal";
 import { EMAIL, PHONE_MOBILE, PHONE_MOBILE_TEL, WHATSAPP_URL } from "@/lib/contacts";
-import heroCup from "@/assets/hero-cup-closeup.jpg.asset.json";
+import promoMacro from "@/assets/promo-2-square.jpg";
 import cupsTrio from "@/assets/cups-trio-qazaqstan.jpg.asset.json";
 import cupCollage from "@/assets/cup-collage.jpg.asset.json";
 import catCups from "@/assets/cat-cups.jpg";
@@ -31,6 +31,7 @@ type Model = {
   code: string;
   name: string;
   img: string;
+  orderModel: string;
   desc: string;
   specs: string[];
   features: string[];
@@ -40,6 +41,7 @@ const models: Model[] = [
   {
     code: "LP-500",
     name: "Стакан матовый 500 мл",
+    orderModel: "Стакан матовый 500 мл (без печати)",
     img: catCups,
     desc: "Базовая позиция без печати — всегда в наличии, подходит для холодных и горячих напитков.",
     specs: [
@@ -54,7 +56,8 @@ const models: Model[] = [
   {
     code: "LP-500-QZ",
     name: "Стакан матовый 500 мл с печатью «Qazakstan»",
-    img: heroCup.url,
+    orderModel: "Стакан матовый 500 мл с печатью «Qazakstan»",
+    img: promoMacro,
     desc: "Золотой национальный орнамент двумя поясами и бирюзовая надпись «Qazaqstan». Готовый тираж.",
     specs: [
       "Объём: 500 мл",
@@ -68,6 +71,7 @@ const models: Model[] = [
   {
     code: "LP-500-HOL",
     name: "Стакан матовый 500 мл с праздничной печатью",
+    orderModel: "Стакан матовый 500 мл с праздничной печатью",
     img: cupsTrio.url,
     desc: "Праздничная серия для сезонных акций, кофеен и мероприятий.",
     specs: [
@@ -82,6 +86,7 @@ const models: Model[] = [
   {
     code: "LP-500-LOVE",
     name: "Стакан матовый 500 мл с печатью «сердечки»",
+    orderModel: "Стакан матовый 500 мл с печатью «сердечки»",
     img: cupCollage.url,
     desc: "Серия «сердечки» — для кофеен, доставки напитков и подарочных наборов.",
     specs: [
@@ -160,7 +165,7 @@ function Catalog() {
                     </div>
                     <Link
                       to="/order"
-                      search={{ model: m.name }}
+                      search={{ model: m.orderModel }}
                       className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--shadow-glow)]"
                     >
                       Выбрать модель
