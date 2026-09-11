@@ -89,39 +89,6 @@ function usePrintTexture(lite: boolean) {
   }, [lite]);
 }
 
-function Drops({ count }: { count: number }) {
-  const drops = useMemo(() => {
-    const out: { p: [number, number, number]; s: number }[] = [];
-    for (let i = 0; i < count; i++) {
-      const t = Math.random();
-      const y = -HEIGHT / 2 + t * HEIGHT;
-      const r = BOT_R + (TOP_R - BOT_R) * t + 0.012;
-      const a = Math.random() * Math.PI * 2;
-      out.push({
-        p: [Math.cos(a) * r, y, Math.sin(a) * r],
-        s: 0.014 + Math.random() * 0.022,
-      });
-    }
-    return out;
-  }, [count]);
-
-  return (
-    <group>
-      {drops.map((d, i) => (
-        <mesh key={i} position={d.p} scale={[1, 1.35, 1]}>
-          <sphereGeometry args={[d.s, 8, 8]} />
-          <meshStandardMaterial
-            color="#ffffff"
-            transparent
-            opacity={0.45}
-            roughness={0.08}
-            metalness={0}
-          />
-        </mesh>
-      ))}
-    </group>
-  );
-}
 
 function Cup({ progress, lite }: { progress: RefObject<number>; lite: boolean }) {
   const group = useRef<THREE.Group>(null);
@@ -250,7 +217,7 @@ function Cup({ progress, lite }: { progress: RefObject<number>; lite: boolean })
         </mesh>
       </group>
 
-      <Drops count={lite ? 14 : 46} />
+      
     </group>
   );
 }
