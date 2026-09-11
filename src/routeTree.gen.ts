@@ -10,12 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CatalogRouteImport } from './routes/catalog'
+import { Route as LeadsRouteImport } from './routes/leads'
 import { Route as OrderRouteImport } from './routes/order'
 import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as PromoRouteImport } from './routes/promo'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CatalogRoute = CatalogRouteImport.update({
+  id: '/catalog',
+  path: '/catalog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadsRoute = LeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrderRoute = OrderRouteImport.update({
@@ -28,35 +41,53 @@ const PartnersRoute = PartnersRouteImport.update({
   path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PromoRoute = PromoRouteImport.update({
+  id: '/promo',
+  path: '/promo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/catalog': typeof CatalogRoute
+  '/leads': typeof LeadsRoute
   '/order': typeof OrderRoute
   '/partners': typeof PartnersRoute
+  '/promo': typeof PromoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/catalog': typeof CatalogRoute
+  '/leads': typeof LeadsRoute
   '/order': typeof OrderRoute
   '/partners': typeof PartnersRoute
+  '/promo': typeof PromoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/catalog': typeof CatalogRoute
+  '/leads': typeof LeadsRoute
   '/order': typeof OrderRoute
   '/partners': typeof PartnersRoute
+  '/promo': typeof PromoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/order' | '/partners'
+  fullPaths: '/' | '/catalog' | '/leads' | '/order' | '/partners' | '/promo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/order' | '/partners'
-  id: '__root__' | '/' | '/order' | '/partners'
+  to: '/' | '/catalog' | '/leads' | '/order' | '/partners' | '/promo'
+  id:
+    '__root__' | '/' | '/catalog' | '/leads' | '/order' | '/partners' | '/promo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CatalogRoute: typeof CatalogRoute
+  LeadsRoute: typeof LeadsRoute
   OrderRoute: typeof OrderRoute
   PartnersRoute: typeof PartnersRoute
+  PromoRoute: typeof PromoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +97,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catalog': {
+      id: '/catalog'
+      path: '/catalog'
+      fullPath: '/catalog'
+      preLoaderRoute: typeof CatalogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leads': {
+      id: '/leads'
+      path: '/leads'
+      fullPath: '/leads'
+      preLoaderRoute: typeof LeadsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/order': {
@@ -82,13 +127,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/promo': {
+      id: '/promo'
+      path: '/promo'
+      fullPath: '/promo'
+      preLoaderRoute: typeof PromoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CatalogRoute: CatalogRoute,
+  LeadsRoute: LeadsRoute,
   OrderRoute: OrderRoute,
   PartnersRoute: PartnersRoute,
+  PromoRoute: PromoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -14,8 +14,10 @@ const nav = [
 ];
 
 const pages = [
+  { label: "Каталог", to: "/catalog" as const },
   { label: "Партнёрам", to: "/partners" as const },
-  { label: "Заявка", to: "/order" as const },
+  { label: "Медиа-кит", to: "/promo" as const },
+  { label: "Заявки", to: "/leads" as const },
 ];
 
 export function Header() {
@@ -79,7 +81,7 @@ export function Header() {
             <span className="hidden sm:inline">WhatsApp</span>
           </a>
           <Link
-            to="/order"
+            to="/order" search={{ model: undefined }}
             className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--shadow-glow)] sm:inline-flex"
           >
             Оформить заявку
@@ -112,15 +114,6 @@ export function Header() {
               <Link
                 key={p.to}
                 to={p.to}
-                className="relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {p.label}
-              </Link>
-            ))}
-            {pages.map((p) => (
-              <Link
-                key={p.to}
-                to={p.to}
                 onClick={() => setOpen(false)}
                 className="rounded-2xl px-3 py-3 text-base font-medium transition-colors hover:bg-secondary"
               >
@@ -143,7 +136,7 @@ export function Header() {
             <MessageCircle className="h-4 w-4" /> Написать в WhatsApp
           </a>
           <Link
-            to="/order"
+            to="/order" search={{ model: undefined }}
             onClick={() => setOpen(false)}
             className="mt-4 block rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
           >

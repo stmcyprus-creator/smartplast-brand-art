@@ -23,10 +23,19 @@ export function Footer() {
 
         <nav className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.2em] text-primary">Навигация</span>
+          <Link to="/catalog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Каталог моделей
+          </Link>
+          <Link to="/promo" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Рекламные кадры
+          </Link>
+          <Link to="/leads" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Заявки клиентов
+          </Link>
           <Link to="/partners" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Партнёрам
           </Link>
-          <Link to="/order" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link to="/order" search={{ model: undefined }} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Заявка на заказ
           </Link>
           {nav.map((n) => (
