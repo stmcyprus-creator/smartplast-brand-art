@@ -2,21 +2,8 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ClientOnly } from "@tanstack/react-router";
 import { ArrowRight, Clock, MouseIcon, Palette, Printer } from "lucide-react";
 import { Reveal } from "./reveal";
-import heroCup from "@/assets/hero-cup-closeup.jpg.asset.json";
-import cupsTrio from "@/assets/cups-trio-qazaqstan.jpg.asset.json";
-import cupHandCity from "@/assets/cup-hand-city.jpg.asset.json";
-import cupCollage from "@/assets/cup-collage.jpg.asset.json";
-import cupsLifestyle from "@/assets/cups-lifestyle.jpg.asset.json";
 
 const CupScene = lazy(() => import("./CupScene"));
-
-const strip = [
-  { src: heroCup.url, alt: "Стакан «Qazaqstan» 500 мл крупным планом" },
-  { src: cupsTrio.url, alt: "Серия стаканов «Qazaqstan», «Love» и матовый" },
-  { src: cupHandCity.url, alt: "Стакан «Qazaqstan» в руке" },
-  { src: cupCollage.url, alt: "Национальный орнамент на стакане" },
-  { src: cupsLifestyle.url, alt: "Стаканы «Qazaqstan» в использовании" },
-];
 
 const floating = [
   { icon: Printer, text: "Печать от 10 000 шт.", pos: "left-2 top-28 sm:left-6 lg:left-10" },
@@ -32,10 +19,11 @@ export function Hero() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const progress = useRef(0);
   const [scrolled, setScrolled] = useState(false);
-  const [spin, setSpin] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => {
+    let raf = 0;
+    const measure = () => {
+      raf = 0;
       const el = wrapRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
@@ -43,19 +31,22 @@ export function Hero() {
       const p = travel > 0 ? Math.min(Math.max(-rect.top / travel, 0), 1) : 0;
       progress.current = p;
       setScrolled(p > 0.06);
-      setSpin(Math.round(p * 360));
     };
-    onScroll();
+    const onScroll = () => {
+      if (!raf) raf = window.requestAnimationFrame(measure);
+    };
+    measure();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
+      if (raf) window.cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
   }, []);
 
   return (
-    <section id="top" ref={wrapRef} className="relative h-[260vh]">
+    <section id="top" ref={wrapRef} className="relative h-[185vh] sm:h-[260vh]">
       {/* pinned viewport */}
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="glow-bg pointer-events-none absolute inset-x-0 -top-40 h-[620px]" />
@@ -68,7 +59,7 @@ export function Hero() {
 
         {/* 3D cup */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-[62vh] w-full max-w-[520px] sm:h-[70vh]">
+          <div className="h-[42vh] w-full max-w-[300px] sm:h-[70vh] sm:max-w-[520px]">
             <ClientOnly fallback={null}>
               <Suspense fallback={null}>
                 <CupScene progress={progress} />
@@ -77,7 +68,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-5xl px-5 pt-32 pb-36 text-center lg:px-8">
+        <div className="relative mx-auto w-full max-w-5xl px-5 pt-32 pb-24 text-center sm:pb-36 lg:px-8">
           <Reveal>
             <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.18em] text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -92,7 +83,7 @@ export function Hero() {
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mx-auto mt-[38vh] max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-[26vh] max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-[38vh] sm:text-lg">
               Производим одноразовую посуду с вашим логотипом — от идеи и дизайна до готового
               тиража
             </p>
@@ -122,31 +113,6 @@ export function Hero() {
             <MouseIcon className="h-4 w-4 text-primary" />
             Прокрутите — стакан повернётся
           </div>
-
-        </div>
-
-        {/* фото стаканов Qazaqstan, поворачиваются вместе с 3D-стаканом */}
-        <div className="absolute inset-x-0 bottom-5 z-10 flex justify-center gap-3 [perspective:1000px] sm:gap-4">
-          {strip.map((img, i) => (
-            <a
-              key={img.alt}
-              href="#gallery"
-              title={img.alt}
-              className="block h-14 w-10 shrink-0 overflow-hidden rounded-xl border border-border transition-shadow duration-300 hover:shadow-[var(--shadow-glow)] sm:h-20 sm:w-14"
-              style={{
-                transform: `rotateY(${spin + i * 12}deg)`,
-                transformStyle: "preserve-3d",
-                transition: "transform 0.35s linear",
-              }}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </a>
-          ))}
         </div>
 
         {floating.map(({ icon: Icon, text, pos }, i) => (

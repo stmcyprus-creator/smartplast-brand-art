@@ -2,7 +2,7 @@ import logoLime from "@/assets/logo-lime-h.svg";
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <a href="#top" className="group flex shrink-0 items-center">
+    <a href="/#top" className="group flex shrink-0 items-center">
       <img
         src={logoLime}
         alt="Like Pack"

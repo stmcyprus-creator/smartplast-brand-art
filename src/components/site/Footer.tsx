@@ -1,12 +1,13 @@
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
 const nav = [
-  { label: "О компании", href: "#about" },
-  { label: "Производство", href: "#production" },
-  { label: "Продукция", href: "#products" },
-  { label: "Брендирование", href: "#branding" },
-  { label: "Доставка", href: "#delivery" },
-  { label: "Контакты", href: "#contact" },
+  { label: "О компании", href: "/#about" },
+  { label: "Производство", href: "/#production" },
+  { label: "Продукция", href: "/#products" },
+  { label: "Брендирование", href: "/#branding" },
+  { label: "Доставка", href: "/#delivery" },
+  { label: "Контакты", href: "/#contact" },
 ];
 
 export function Footer() {
@@ -22,6 +23,12 @@ export function Footer() {
 
         <nav className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.2em] text-primary">Навигация</span>
+          <Link to="/partners" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Партнёрам
+          </Link>
+          <Link to="/order" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Заявка на заказ
+          </Link>
           {nav.map((n) => (
             <a
               key={n.href}
@@ -55,7 +62,7 @@ export function Footer() {
             {["TG", "VK", "WA"].map((s) => (
               <a
                 key={s}
-                href="#contact"
+                href="/#contact"
                 aria-label={s}
                 className="grid h-11 w-11 place-items-center rounded-full border border-border text-xs font-bold transition-colors hover:border-primary hover:text-primary"
               >
@@ -64,7 +71,7 @@ export function Footer() {
             ))}
           </div>
           <a
-            href="#contact"
+            href="/#contact"
             className="mt-4 text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
           >
             Политика конфиденциальности

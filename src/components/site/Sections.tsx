@@ -16,7 +16,12 @@ import heroCups from "@/assets/hero-cups.png.asset.json";
 import prodLine from "@/assets/prod-line.jpg.asset.json";
 import prodMachine from "@/assets/prod-machine.jpg.asset.json";
 import catCups from "@/assets/cat-cups.jpg";
+import { lazy, Suspense } from "react";
+import { ClientOnly } from "@tanstack/react-router";
+import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import { Reveal } from "./reveal";
+
+const CupScene = lazy(() => import("./CupScene"));
 
 function SectionTitle({
   kicker,
@@ -233,9 +238,24 @@ const advantages = [
 ];
 
 export function Why() {
+  const { ref, progress } = useScrollProgress<HTMLDivElement>();
+
   return (
-    <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
-      <SectionTitle kicker="Преимущества" title="Почему выбирают Like Pack" />
+    <section ref={ref} className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
+      <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <SectionTitle
+          kicker="Преимущества"
+          title="Почему выбирают Like Pack"
+          text="Прокручивайте — стакан поворачивается, показывая печать со всех сторон."
+        />
+        <div className="h-[300px] sm:h-[380px]">
+          <ClientOnly fallback={null}>
+            <Suspense fallback={null}>
+              <CupScene progress={progress} scale={1.15} />
+            </Suspense>
+          </ClientOnly>
+        </div>
+      </div>
       <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {advantages.map((a, i) => (
           <Reveal key={a.title} delay={i * 70}>

@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { Menu, MessageCircle, Phone, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { PHONE_MOBILE, PHONE_MOBILE_TEL, WHATSAPP_URL } from "@/lib/contacts";
 
 const nav = [
-  { label: "О компании", href: "#about" },
-  { label: "Производство", href: "#production" },
-  { label: "Продукция", href: "#products" },
-  { label: "Брендирование", href: "#branding" },
-  { label: "Доставка", href: "#delivery" },
-  { label: "Контакты", href: "#contact" },
+  { label: "О компании", href: "/#about" },
+  { label: "Производство", href: "/#production" },
+  { label: "Продукция", href: "/#products" },
+  { label: "Брендирование", href: "/#branding" },
+  { label: "Доставка", href: "/#delivery" },
+  { label: "Контакты", href: "/#contact" },
+];
+
+const pages = [
+  { label: "Партнёрам", to: "/partners" as const },
+  { label: "Заявка", to: "/order" as const },
 ];
 
 export function Header() {
@@ -30,9 +36,9 @@ export function Header() {
       }`}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 lg:px-8">
-        <div className="flex min-w-0 items-center gap-10">
+        <div className="flex min-w-0 items-center gap-8">
           <Logo />
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-5 min-[1400px]:flex">
             {nav.map((item) => (
               <a
                 key={item.href}
@@ -41,6 +47,15 @@ export function Header() {
               >
                 {item.label}
               </a>
+            ))}
+            {pages.map((p) => (
+              <Link
+                key={p.to}
+                to={p.to}
+                className="relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {p.label}
+              </Link>
             ))}
           </nav>
         </div>
@@ -63,17 +78,17 @@ export function Header() {
             <MessageCircle className="h-4 w-4 shrink-0" />
             <span className="hidden sm:inline">WhatsApp</span>
           </a>
-          <a
-            href="#contact"
+          <Link
+            to="/order"
             className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--shadow-glow)] sm:inline-flex"
           >
-            Обсудить проект
-          </a>
+            Оформить заявку
+          </Link>
           <button
             type="button"
             aria-label="Меню"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border lg:hidden"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border min-[1400px]:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -81,7 +96,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="glass mx-5 mt-3 rounded-3xl p-5 lg:hidden">
+        <div className="glass mx-5 mt-3 rounded-3xl p-5 min-[1400px]:hidden">
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (
               <a
@@ -92,6 +107,25 @@ export function Header() {
               >
                 {item.label}
               </a>
+            ))}
+            {pages.map((p) => (
+              <Link
+                key={p.to}
+                to={p.to}
+                className="relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {p.label}
+              </Link>
+            ))}
+            {pages.map((p) => (
+              <Link
+                key={p.to}
+                to={p.to}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl px-3 py-3 text-base font-medium transition-colors hover:bg-secondary"
+              >
+                {p.label}
+              </Link>
             ))}
           </nav>
           <a
@@ -108,13 +142,13 @@ export function Header() {
           >
             <MessageCircle className="h-4 w-4" /> Написать в WhatsApp
           </a>
-          <a
-            href="#contact"
+          <Link
+            to="/order"
             onClick={() => setOpen(false)}
             className="mt-4 block rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
           >
-            Обсудить проект
-          </a>
+            Оформить заявку
+          </Link>
         </div>
       )}
     </header>
