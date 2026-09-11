@@ -7,55 +7,86 @@ const TOP_R = 0.62;
 const BOT_R = 0.42;
 const HEIGHT = 1.7;
 
-/** Print texture: lime hearts + "LOVE" lettering, generated on a canvas. */
+/**
+ * Print texture in the style of the reference cup:
+ * two golden ornament bands and turquoise "Qazaqstan" script lettering.
+ */
 function usePrintTexture() {
   return useMemo(() => {
     const c = document.createElement("canvas");
-    c.width = 1024;
-    c.height = 512;
+    c.width = 2048;
+    c.height = 1024;
     const ctx = c.getContext("2d")!;
     ctx.clearRect(0, 0, c.width, c.height);
 
-    const heart = (x: number, y: number, s: number, alpha: number) => {
+    const gold = "#f2c53d";
+
+    /** One repeating ornament band across the full width. */
+    const band = (y: number, h: number) => {
       ctx.save();
-      ctx.translate(x, y);
-      ctx.scale(s, s);
-      ctx.globalAlpha = alpha;
-      ctx.fillStyle = "#c7f24a";
+      ctx.strokeStyle = gold;
+      ctx.fillStyle = gold;
+      ctx.lineWidth = 5;
       ctx.beginPath();
-      ctx.moveTo(0, 6);
-      ctx.bezierCurveTo(-10, -4, -8, -14, 0, -8);
-      ctx.bezierCurveTo(8, -14, 10, -4, 0, 6);
-      ctx.closePath();
-      ctx.fill();
+      ctx.moveTo(0, y - h / 2);
+      ctx.lineTo(c.width, y - h / 2);
+      ctx.moveTo(0, y + h / 2);
+      ctx.lineTo(c.width, y + h / 2);
+      ctx.stroke();
+
+      const step = 84;
+      for (let x = 0; x < c.width; x += step) {
+        const cx = x + step / 2;
+        // central diamond
+        ctx.beginPath();
+        ctx.moveTo(cx, y - h * 0.32);
+        ctx.lineTo(cx + h * 0.22, y);
+        ctx.lineTo(cx, y + h * 0.32);
+        ctx.lineTo(cx - h * 0.22, y);
+        ctx.closePath();
+        ctx.fill();
+        // curled side motifs
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.arc(cx - step * 0.28, y, h * 0.3, -Math.PI * 0.85, Math.PI * 0.85);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cx + step * 0.28, y, h * 0.3, Math.PI * 0.15, Math.PI * 1.85);
+        ctx.stroke();
+        // small dots
+        ctx.beginPath();
+        ctx.arc(cx, y - h * 0.42, 4, 0, Math.PI * 2);
+        ctx.arc(cx, y + h * 0.42, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
       ctx.restore();
     };
 
-    for (let row = 0; row < 6; row++) {
-      for (let col = 0; col < 14; col++) {
-        const x = col * 74 + (row % 2 ? 37 : 0);
-        const y = 60 + row * 78;
-        heart(x, y, 1.5 + ((row + col) % 3) * 0.25, 0.85);
-      }
-    }
+    band(180, 96);
+    band(844, 96);
 
-    ctx.globalAlpha = 1;
-    ctx.font = "bold 118px 'Unbounded', system-ui, sans-serif";
+    // turquoise handwritten-style wordmark, repeated around the cup
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    for (let i = 0; i < 3; i++) {
-      const x = 170 + i * 342;
-      ctx.fillStyle = "#e9ffb0";
-      ctx.fillText("LOVE", x, 256);
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "rgba(199,242,74,0.9)";
-      ctx.strokeText("LOVE", x, 256);
+    for (let i = 0; i < 2; i++) {
+      const x = 512 + i * 1024;
+      ctx.save();
+      ctx.translate(x, 512);
+      ctx.rotate(-0.05);
+      ctx.font =
+        "italic bold 220px 'Brush Script MT', 'Segoe Script', 'Comic Sans MS', cursive";
+      ctx.fillStyle = "#2ec5d8";
+      ctx.fillText("Qazaqstan", 0, 0);
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = "#1aa9bd";
+      ctx.strokeText("Qazaqstan", 0, 0);
+      ctx.restore();
     }
 
     const tex = new THREE.CanvasTexture(c);
     tex.colorSpace = THREE.SRGBColorSpace;
     tex.wrapS = THREE.RepeatWrapping;
-    tex.anisotropy = 4;
+    tex.anisotropy = 8;
     return tex;
   }, []);
 }
@@ -162,28 +193,60 @@ function Cup({ progress }: { progress: RefObject<number> }) {
         />
       </mesh>
 
-      {/* drink */}
+      {/* iced drink */}
       <mesh position={[0, -0.12, 0]}>
         <cylinderGeometry args={[TOP_R * 0.93, BOT_R * 0.96, HEIGHT * 0.78, 64]} />
         <meshPhysicalMaterial
-          color="#b7e04a"
-          roughness={0.25}
-          transmission={0.6}
+          color="#dff2f7"
+          roughness={0.2}
+          transmission={0.75}
           thickness={0.9}
           ior={1.33}
           transparent
-          opacity={0.85}
+          opacity={0.8}
         />
       </mesh>
 
-      {/* straw */}
-      <group position={[0.17, 0.42, 0.05]} rotation-z={-0.24}>
+      {/* clear lid */}
+      <group position={[0, HEIGHT / 2 + 0.045, 0]}>
         <mesh>
-          <cylinderGeometry args={[0.045, 0.045, 2.15, 24, 1, true]} />
-          <meshStandardMaterial
-            color="#c7f24a"
-            roughness={0.35}
-            metalness={0.05}
+          <cylinderGeometry args={[TOP_R + 0.05, TOP_R + 0.05, 0.09, 64, 1, true]} />
+          <meshPhysicalMaterial
+            color="#eef6f8"
+            roughness={0.22}
+            transmission={0.85}
+            thickness={0.25}
+            transparent
+            opacity={0.85}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+        <mesh position={[0, 0.05, 0]} rotation-x={-Math.PI / 2}>
+          <circleGeometry args={[TOP_R + 0.05, 64]} />
+          <meshPhysicalMaterial
+            color="#e8f3f6"
+            roughness={0.18}
+            transmission={0.8}
+            thickness={0.2}
+            transparent
+            opacity={0.75}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+      </group>
+
+      {/* clear straw */}
+      <group position={[0.15, 0.55, 0.04]} rotation-z={-0.2}>
+        <mesh>
+          <cylinderGeometry args={[0.05, 0.05, 2.2, 24, 1, true]} />
+          <meshPhysicalMaterial
+            color="#e6f4f7"
+            roughness={0.1}
+            transmission={0.85}
+            thickness={0.15}
+            ior={1.45}
+            transparent
+            opacity={0.85}
             side={THREE.DoubleSide}
           />
         </mesh>
