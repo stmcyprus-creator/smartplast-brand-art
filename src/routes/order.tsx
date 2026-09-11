@@ -5,12 +5,16 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/reveal";
 import { EMAIL, PHONE_MOBILE, PHONE_MOBILE_TEL, WHATSAPP_URL } from "@/lib/contacts";
+import { leadMailtoUrl, leadWhatsappUrl, saveLead, type Lead } from "@/lib/leads";
 
 const title = "Заявка на заказ стаканов — like-pack.qz";
 const description =
   "Оформите заявку на матовые стаканы 500 мл: выберите модель, количество и оставьте контакт — заявка уйдёт на hmd_kz@mail.ru.";
 
 export const Route = createFileRoute("/order")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    model: typeof search.model === "string" ? search.model : undefined,
+  }),
   head: () => ({
     meta: [
       { title },
@@ -26,7 +30,7 @@ export const Route = createFileRoute("/order")({
 
 const models = [
   "Стакан матовый 500 мл (без печати)",
-  "Стакан матовый 500 мл с печатью «Qazaqstan»",
+  "Стакан матовый 500 мл с печатью «Qazakstan»",
   "Стакан матовый 500 мл с праздничной печатью",
   "Стакан матовый 500 мл с печатью «сердечки»",
   "Стакан матовый 500 мл с печатью по моему макету",
@@ -44,31 +48,34 @@ const terms = ["Срочно — до 14 дней", "14–21 день", "21–30
 const fieldClass =
   "w-full rounded-2xl border border-input bg-background/50 px-5 py-4 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary";
 
+const SUBJECT = "Заявка на заказ стаканов — like-pack.qz";
+
 function Order() {
-  const [sent, setSent] = useState(false);
+  const { model: presetModel } = Route.useSearch();
+  const [lead, setLead] = useState<Lead | null>(null);
+
+  const defaultModel = presetModel && models.includes(presetModel) ? presetModel : "";
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const v = (k: string) => String(f.get(k) ?? "").trim();
-    const body = [
-      `Модель: ${v("model")}`,
-      `Количество: ${v("quantity")}`,
-      `Срок поставки: ${v("term")}`,
-      "",
-      `Компания: ${v("company") || "—"}`,
-      `Контактное лицо: ${v("name")}`,
-      `Телефон: ${v("phone")}`,
-      `Email: ${v("email")}`,
-      `Город доставки: ${v("city") || "—"}`,
-      "",
-      `Комментарий: ${v("comment") || "—"}`,
-    ].join("\n");
 
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      "Заявка на заказ стаканов — like-pack.qz",
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    const saved = saveLead({
+      source: "Страница заявки",
+      model: v("model"),
+      quantity: v("quantity"),
+      term: v("term"),
+      company: v("company"),
+      name: v("name"),
+      phone: v("phone"),
+      email: v("email"),
+      city: v("city"),
+      comment: v("comment"),
+    });
+
+    window.location.href = leadMailtoUrl(saved, SUBJECT);
+    setLead(saved);
   };
 
   return (
@@ -81,30 +88,33 @@ function Order() {
             Оформите заказ <span className="text-lime-gradient">стаканов 500 мл</span>
           </h1>
           <p className="mt-5 max-w-2xl text-muted-foreground sm:text-lg">
-            Выберите модель и количество — заявка уйдёт на {EMAIL}, менеджер подготовит расчёт в
-            течение рабочего дня.
+            Выберите модель и количество — заявка уйдёт на {EMAIL}, сохранится в панели заявок и её
+            можно сразу продублировать в WhatsApp.
           </p>
+          <Link to="/catalog" className="mt-4 inline-flex text-sm font-semibold text-primary">
+            Посмотреть каталог моделей →
+          </Link>
         </Reveal>
 
         <Reveal delay={100}>
-          {sent ? (
+          {lead ? (
             <div className="glass mt-12 flex flex-col items-center rounded-[2rem] p-10 text-center">
               <span className="grid h-16 w-16 place-items-center rounded-full bg-primary">
                 <Check className="h-8 w-8 text-primary-foreground" />
               </span>
               <h2 className="mt-6 font-display text-2xl font-bold">Заявка отправлена</h2>
               <p className="mt-3 max-w-md text-sm text-muted-foreground">
-                Письмо с заявкой сформировано и отправляется на {EMAIL}. Хотите быстрее — напишите в
-                WhatsApp или позвоните {PHONE_MOBILE}.
+                Письмо с заявкой сформировано и отправляется на {EMAIL}. Продублируйте заявку в
+                WhatsApp — так менеджер увидит её быстрее. Или позвоните {PHONE_MOBILE}.
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
                 <a
-                  href={WHATSAPP_URL}
+                  href={leadWhatsappUrl(lead, SUBJECT)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground"
                 >
-                  <MessageCircle className="h-4 w-4" /> WhatsApp
+                  <MessageCircle className="h-4 w-4" /> Отправить в WhatsApp
                 </a>
                 <a
                   href={`tel:${PHONE_MOBILE_TEL}`}
@@ -114,19 +124,22 @@ function Order() {
                 </a>
                 <button
                   type="button"
-                  onClick={() => setSent(false)}
+                  onClick={() => setLead(null)}
                   className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
                 >
                   Новая заявка
                 </button>
               </div>
-              <Link to="/" className="mt-6 text-sm text-muted-foreground hover:text-primary">
+              <Link to="/leads" className="mt-6 text-sm text-primary hover:underline">
+                Открыть панель заявок
+              </Link>
+              <Link to="/" className="mt-3 text-sm text-muted-foreground hover:text-primary">
                 Вернуться на главную
               </Link>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="glass mt-12 space-y-4 rounded-[2rem] p-6 sm:p-10">
-              <select required name="model" defaultValue="" className={fieldClass}>
+              <select required name="model" defaultValue={defaultModel} className={fieldClass}>
                 <option value="" disabled>
                   Модель стакана
                 </option>

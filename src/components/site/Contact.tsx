@@ -38,20 +38,19 @@ export function Contact() {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const v = (k: string) => String(f.get(k) ?? "").trim();
-    const body = [
-      `Имя: ${v("name")}`,
-      `Телефон: ${v("phone")}`,
-      `Email: ${v("email")}`,
-      `Количество стаканов: ${v("quantity")}`,
-      `Печать: ${v("print")}`,
-      `Срок поставки: ${v("term")}`,
-      "",
-      `Комментарий: ${v("comment") || "—"}`,
-    ].join("\n");
 
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      "Заявка с сайта like-pack.qz",
-    )}&body=${encodeURIComponent(body)}`;
+    const saved = saveLead({
+      source: "Форма на главной",
+      name: v("name"),
+      phone: v("phone"),
+      email: v("email"),
+      quantity: v("quantity"),
+      print: v("print"),
+      term: v("term"),
+      comment: v("comment"),
+    });
+
+    window.location.href = leadMailtoUrl(saved, "Заявка с сайта like-pack.qz");
     setSent(true);
   };
 
