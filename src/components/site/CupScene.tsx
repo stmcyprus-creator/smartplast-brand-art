@@ -62,8 +62,8 @@ function usePrintTexture() {
       ctx.restore();
     };
 
-    band(180, 96);
-    band(844, 96);
+    band(170, 96);
+    band(760, 96);
 
     // turquoise handwritten-style wordmark, repeated around the cup
     ctx.textAlign = "center";
