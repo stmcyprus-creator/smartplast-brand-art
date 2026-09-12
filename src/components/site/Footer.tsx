@@ -55,10 +55,10 @@ export function Footer() {
             +7 700 530-31-41
           </a>
           <a
-            href="mailto:hmd_kz@mail.ru"
+            href="mailto:info@likepack.kz"
             className="text-sm text-muted-foreground transition-colors hover:text-primary"
           >
-            hmd_kz@mail.ru
+            info@likepack.kz
           </a>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
             Республика Казахстан — доставка до адреса
