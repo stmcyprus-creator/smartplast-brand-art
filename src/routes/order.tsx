@@ -9,7 +9,7 @@ import { leadMailtoUrl, leadWhatsappUrl, saveLead, type Lead } from "@/lib/leads
 
 const title = "Заявка на заказ стаканов — like-pack.qz";
 const description =
-  "Оформите заявку на матовые стаканы 500 мл: выберите модель, количество и оставьте контакт — заявка уйдёт на hmd_kz@mail.ru.";
+  "Оформите заявку на матовые стаканы 500 мл: выберите модель, количество и оставьте контакт — заявка уйдёт на info@likepack.kz.";
 
 export const Route = createFileRoute("/order")({
   validateSearch: (search: Record<string, unknown>) => ({
