@@ -14,9 +14,9 @@ import aboutCup from "@/assets/about-cup.jpg.asset.json";
 import heroCups from "@/assets/hero-cups.png.asset.json";
 import prodRobot from "@/assets/prod-robot.jpg";
 import prodPrint from "@/assets/prod-print.jpg";
-import promoTrio from "@/assets/promo-1-square.jpg";
-import promoStory from "@/assets/promo-4-story.jpg";
-import catCups from "@/assets/cat-cups.jpg";
+import promoTrio from "@/assets/about-frosted-cups.jpg";
+import cupHeartsLove from "@/assets/cup-hearts-love.jpg";
+import catCups from "@/assets/cup-frosted-plain.jpg";
 import { lazy, Suspense } from "react";
 import { ClientOnly } from "@tanstack/react-router";
 import { useScrollProgress } from "@/hooks/use-scroll-progress";
@@ -117,7 +117,7 @@ export function About() {
             <div className="grain relative overflow-hidden rounded-[2.5rem] border border-border">
               <img
                 src={promoTrio}
-                alt="Три стакана Like Pack 500 мл с печатью Qazaqstan"
+                alt="Матовые прозрачные стаканы Like Pack 500 мл из полипропилена"
                 loading="lazy"
                 width={1080}
                 height={1080}
@@ -153,7 +153,7 @@ const products = [
   {
     title: "Стакан матовый 500 мл с печатью «сердечки»",
     text: "Яркий узор, стойкие краски CMYK и Pantone.",
-    img: promoStory,
+    img: cupHeartsLove,
     icon: CupSoda,
   },
 ];
