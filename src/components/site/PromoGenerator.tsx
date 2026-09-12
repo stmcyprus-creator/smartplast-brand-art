@@ -30,7 +30,7 @@ const presets = [
 ];
 
 export function PromoGenerator() {
-  const [prompt, setPrompt] = useState(presets[0]);
+  const [prompt, setPrompt] = useState<string>(presets[0] ?? "");
   const [format, setFormat] = useState<(typeof formats)[number]["id"]>("square");
   const [src, setSrc] = useState<string | null>(null);
   const [isFinal, setIsFinal] = useState(false);

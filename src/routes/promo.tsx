@@ -3,6 +3,7 @@ import { Download } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/reveal";
+import { PromoGenerator } from "@/components/site/PromoGenerator";
 import promo1 from "@/assets/promo-1-square.jpg";
 import promo2 from "@/assets/promo-2-square.jpg";
 import promo3 from "@/assets/promo-3-story.jpg";
@@ -53,7 +54,11 @@ function Promo() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal>
+          <PromoGenerator />
+        </Reveal>
+
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {shots.map((s, i) => (
             <Reveal key={s.src} delay={i * 70}>
               <figure className="glass overflow-hidden rounded-[2rem]">
