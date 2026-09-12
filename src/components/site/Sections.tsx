@@ -14,7 +14,7 @@ import aboutCup from "@/assets/about-cup.jpg.asset.json";
 import heroCups from "@/assets/hero-cups.png.asset.json";
 import prodRobot from "@/assets/prod-robot.jpg";
 import prodPrint from "@/assets/prod-print.jpg";
-import promoTrio from "@/assets/about-frosted-cups.jpg";
+import promoTrio from "@/assets/about-trio-frosted.jpg";
 import cupHeartsLove from "@/assets/cup-hearts-love.jpg";
 import catCups from "@/assets/cup-frosted-plain.jpg";
 import { lazy, Suspense } from "react";
@@ -117,10 +117,10 @@ export function About() {
             <div className="grain relative overflow-hidden rounded-[2.5rem] border border-border">
               <img
                 src={promoTrio}
-                alt="Матовые прозрачные стаканы Like Pack 500 мл из полипропилена"
+                alt="Три матовых прозрачных стакана Like Pack 500 мл: без печати, «Qazaqstan» и «сердечки»"
                 loading="lazy"
-                width={1080}
-                height={1080}
+                width={1280}
+                height={1280}
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
