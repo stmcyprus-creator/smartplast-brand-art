@@ -15,6 +15,7 @@ import { Route as LeadsRouteImport } from './routes/leads'
 import { Route as OrderRouteImport } from './routes/order'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PromoRouteImport } from './routes/promo'
+import { Route as ApiGenerateImageRouteImport } from './routes/api/generate-image'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const PromoRoute = PromoRouteImport.update({
   path: '/promo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGenerateImageRoute = ApiGenerateImageRouteImport.update({
+  id: '/api/generate-image',
+  path: '/api/generate-image',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/order': typeof OrderRoute
   '/partners': typeof PartnersRoute
   '/promo': typeof PromoRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/order': typeof OrderRoute
   '/partners': typeof PartnersRoute
   '/promo': typeof PromoRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,14 +79,36 @@ export interface FileRoutesById {
   '/order': typeof OrderRoute
   '/partners': typeof PartnersRoute
   '/promo': typeof PromoRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/catalog' | '/leads' | '/order' | '/partners' | '/promo'
+  fullPaths:
+    | '/'
+    | '/catalog'
+    | '/leads'
+    | '/order'
+    | '/partners'
+    | '/promo'
+    | '/api/generate-image'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/catalog' | '/leads' | '/order' | '/partners' | '/promo'
+  to:
+    | '/'
+    | '/catalog'
+    | '/leads'
+    | '/order'
+    | '/partners'
+    | '/promo'
+    | '/api/generate-image'
   id:
-    '__root__' | '/' | '/catalog' | '/leads' | '/order' | '/partners' | '/promo'
+    | '__root__'
+    | '/'
+    | '/catalog'
+    | '/leads'
+    | '/order'
+    | '/partners'
+    | '/promo'
+    | '/api/generate-image'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -88,6 +118,7 @@ export interface RootRouteChildren {
   OrderRoute: typeof OrderRoute
   PartnersRoute: typeof PartnersRoute
   PromoRoute: typeof PromoRoute
+  ApiGenerateImageRoute: typeof ApiGenerateImageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -134,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PromoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/generate-image': {
+      id: '/api/generate-image'
+      path: '/api/generate-image'
+      fullPath: '/api/generate-image'
+      preLoaderRoute: typeof ApiGenerateImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -144,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrderRoute: OrderRoute,
   PartnersRoute: PartnersRoute,
   PromoRoute: PromoRoute,
+  ApiGenerateImageRoute: ApiGenerateImageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
